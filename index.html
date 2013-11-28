@@ -7,33 +7,33 @@
 
     // Wait for device API libraries to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+   document.addEventListener("deviceready", onDeviceReady, false);
 
     var watchID = null;
 
     // device APIs are available
     //
     function onDeviceReady() {
-        // Get the most accurate position updates available on the
-        // device.
-        
-		var options = { frequency: 2000 };
+        // Throw an error if no update is received every 30 seconds
+        var options = { timeout: 3000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
 
     // onSuccess Geolocation
-   function onSuccess(position) {
+    //
+    function onSuccess(position) {
         var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />' +
-                            'Altitude: '           + position.coords.altitude              + '<br />' +
-                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + position.coords.heading               + '<br />' +
-                            'Speed: '              + position.coords.speed                 + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
     }
 
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
     // clear the watch that was started earlier
     //
     function clearWatch() {
@@ -53,7 +53,7 @@
     </script>
   </head>
   <body>
-    <p id="geolocation">Watching geolocation...</p>
+    <p id="geolocation">Where am I...</p>
         <button onclick="clearWatch();">Clear Watch</button>
   </body>
 </html>
