@@ -14,13 +14,13 @@
 
     // device APIs are available
     //
-	var options = { maximumAge: 5000, enableHighAccuracy: true };
+
 	
     function onDeviceReady() {
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 5000, enableHighAccuracy: true });
     }
 
     // onSuccess Geolocation
