@@ -14,11 +14,13 @@
 
     // device APIs are available
     //
+	var options = { frequency: 5000, enableHighAccuracy: true };
+	
     function onDeviceReady() {
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { frequency: 5000, enableHighAccuracy: true };);
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
 
     // onSuccess Geolocation
