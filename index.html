@@ -20,7 +20,7 @@
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 5000, enableHighAccuracy: true });
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 500, enableHighAccuracy: true });
     }
 
     // onSuccess Geolocation
@@ -30,6 +30,11 @@
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
+							   'Accuracy: '            + position.coords.accuracy              + '<br />' +
+                'Altitude Accuracy: '   + position.coords.altitudeAccuracy      + '<br />' +
+                'Heading: '             + position.coords.heading               + '<br />' +
+                'Speed: '               + position.coords.speed                 + '<br />' +
+                'Timestamp: '           + new Date(position.timestamp
     }
 
     // clear the watch that was started earlier
