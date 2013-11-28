@@ -20,22 +20,21 @@
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 500, enableHighAccuracy: true });
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, { maximumAge: 1000, enableHighAccuracy: true });
     }
 
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-							   'Accuracy: '            + position.coords.accuracy              + '<br />' +
-                'Altitude Accuracy: '   + position.coords.altitudeAccuracy      + '<br />' +
-                'Heading: '             + position.coords.heading               + '<br />' +
-                'Speed: '               + position.coords.speed                 + '<br />' +
-                'Timestamp: '           + new Date(position.timestamp
-                            '<hr />'      + element.innerHTML;
-							
+               var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '          + position.coords.latitude         + '<br />' +
+                            'Longitude: '         + position.coords.longitude        + '<br />' +
+                            'Altitude: '          + position.coords.altitude         + '<br />' +
+                            'Accuracy: '          + position.coords.accuracy         + '<br />' +
+                            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+                            'Heading: '           + position.coords.heading          + '<br />' +
+                            'Speed: '             + position.coords.speed            + '<br />' +
+                            'Timestamp: '         + position.timestamp               + '<br />';
     }
 
     // clear the watch that was started earlier
